@@ -1,10 +1,159 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muzammil Ahmed | Portfolio</title>
+    <style>
+        /* Premium Dark Theme Settings */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #0a0a0a; /* Premium deep black */
+            color: #ffffff; /* Elegant white text */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+        }
+        
+        /* Navigation Bar */
+        header {
+            padding: 30px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: normal;
+            letter-spacing: 1px;
+        }
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #888888;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 50px;
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .hero h1 {
+            font-size: 50px;
+            margin-bottom: 20px;
+            font-weight: normal;
+            letter-spacing: 2px;
+        }
+        .hero h1 strong {
+            font-weight: bold;
+        }
+        .hero p {
+            font-size: 16px;
+            color: #cccccc;
+            margin-bottom: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Call to Action Button */
+        .btn {
+            background-color: #ffffff;
+            color: #000000;
+            padding: 15px 40px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            letter-spacing: 1px;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #dddddd;
+        }
+
+        /* Stats Section */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            margin-top: 100px;
+            border-top: 1px solid #222;
+            padding-top: 50px;
+        }
+        .stat-item h3 {
+            font-size: 32px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .stat-item p {
+            color: #888888;
+            font-size: 14px;
+        }
+
+        /* Global Footer positioned at the bottom */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: #0f0f0f;
+            border-top: 1px solid #222;
+            margin-top: 100px;
+            width: 100%;
+        }
+        footer p {
+            color: #666666;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to My Portfolio!</h1>
-    <p>I am building this website using GitHub Pages.</p>
+
+    <header>
+        <div class="logo">Muzammil Ahmed</div>
+        <nav>
+            <a href="#services">Services</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#experience">Experience</a>
+            <a href="#contact">Contact Us</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>SOFTWARE ENGINEER,<br><strong>.NET & FLUTTER DEVELOPER</strong></h1>
+        <p>With a passion for tech and a lifelong commitment to crafting robust cross-platform solutions. I am eager to dedicate my skills to transforming ideas into seamless applications.</p>
+        
+        <a href="#contact" class="btn">LET'S TALK</a>
+
+        <div class="stats">
+            <div class="stat-item">
+                <h3>1st Place</h3>
+                <p>COMBITS'25 Hackathon</p>
+            </div>
+            <div class="stat-item">
+                <h3>3.5</h3>
+                <p>CGPA</p>
+            </div>
+            <div class="stat-item">
+                <h3>4+</h3>
+                <p>Major Projects Completed</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Muzammil Ahmed. All rights reserved.</p>
+        <p>muzammilahmed5711@gmail.com | 03051030354</p>
+    </footer>
+
 </body>
 </html>
