@@ -3,116 +3,189 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muzammil Ahmed | Portfolio</title>
+    <title>Muzammil Ahmed | Software Engineer</title>
     <style>
-        /* Premium Dark Theme Settings */
+        /* --- Base Theme (Premium Dark) --- */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            scroll-behavior: smooth;
         }
         body {
-            background-color: #0a0a0a; /* Premium deep black */
-            color: #ffffff; /* Elegant white text */
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #000000; /* Pure Black for Premium look */
+            color: #ffffff;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
+            overflow-x: hidden;
         }
-        
-        /* Navigation Bar */
+
+        /* --- Navigation --- */
         header {
-            padding: 30px 50px;
+            padding: 30px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: sticky;
+            top: 0;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
         }
         .logo {
-            font-size: 24px;
-            font-weight: normal;
+            font-size: 22px;
+            font-weight: 600;
             letter-spacing: 1px;
+            text-transform: uppercase;
         }
         nav a {
             color: #ffffff;
             text-decoration: none;
-            margin-left: 30px;
-            font-size: 14px;
-            transition: color 0.3s;
+            margin-left: 35px;
+            font-size: 13px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: opacity 0.3s;
+            opacity: 0.7;
         }
         nav a:hover {
-            color: #888888;
+            opacity: 1;
         }
 
-        /* Hero Section */
+        /* --- Hero Section --- */
         .hero {
-            padding: 120px 50px;
-            text-align: center;
-            max-width: 1000px;
-            margin: 0 auto;
+            padding: 150px 8% 100px;
+            max-width: 1200px;
         }
         .hero h1 {
-            font-size: 50px;
-            margin-bottom: 20px;
-            font-weight: normal;
-            letter-spacing: 2px;
+            font-size: clamp(40px, 6vw, 70px);
+            line-height: 1.1;
+            font-weight: 300;
+            margin-bottom: 30px;
+            letter-spacing: -1px;
         }
-        .hero h1 strong {
-            font-weight: bold;
+        .hero h1 b {
+            font-weight: 700;
+            display: block;
         }
         .hero p {
-            font-size: 16px;
-            color: #cccccc;
-            margin-bottom: 50px;
+            font-size: 18px;
+            color: #888;
             max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            margin-bottom: 40px;
         }
-        
-        /* Call to Action Button */
         .btn {
-            background-color: #ffffff;
-            color: #000000;
-            padding: 15px 40px;
+            display: inline-block;
+            background: #fff;
+            color: #000;
+            padding: 18px 45px;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 700;
             font-size: 14px;
             letter-spacing: 1px;
-            transition: background-color 0.3s;
+            transition: transform 0.3s;
         }
         .btn:hover {
-            background-color: #dddddd;
+            transform: scale(1.05);
         }
 
-        /* Stats Section */
+        /* --- Stats Row --- */
         .stats {
             display: flex;
-            justify-content: center;
-            gap: 80px;
-            margin-top: 100px;
-            border-top: 1px solid #222;
+            gap: 60px;
+            margin-top: 80px;
             padding-top: 50px;
+            border-top: 1px solid #222;
         }
-        .stat-item h3 {
-            font-size: 32px;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        .stat-item p {
-            color: #888888;
-            font-size: 14px;
+        .stat-item h3 { font-size: 35px; font-weight: 700; }
+        .stat-item p { font-size: 12px; text-transform: uppercase; color: #555; letter-spacing: 2px; }
+
+        /* --- Sections General --- */
+        section { padding: 100px 8%; }
+        .section-title {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            color: #555;
+            margin-bottom: 50px;
+            display: block;
         }
 
-        /* Global Footer positioned at the bottom */
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            background-color: #0f0f0f;
-            border-top: 1px solid #222;
-            margin-top: 100px;
-            width: 100%;
+        /* --- Grid Layouts (Services & Portfolio) --- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
         }
-        footer p {
-            color: #666666;
-            font-size: 14px;
-            margin-bottom: 10px;
+
+        /* --- Cards (Services & Projects) --- */
+        .card {
+            background: #0a0a0a;
+            border: 1px solid #1a1a1a;
+            padding: 40px;
+            transition: border 0.3s;
+        }
+        .card:hover { border-color: #444; }
+        .card h3 { margin-bottom: 15px; font-weight: 600; }
+        .card p { color: #888; font-size: 15px; }
+
+        .portfolio-card { padding: 0; overflow: hidden; border: none; background: none; }
+        .portfolio-img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: filter 0.5s, transform 0.5s;
+        }
+        .portfolio-card:hover .portfolio-img { filter: grayscale(0%); transform: scale(1.05); }
+        .project-info { padding: 25px 0; }
+
+        /* --- Experience Timeline --- */
+        .exp-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 30px 0;
+            border-bottom: 1px solid #1a1a1a;
+        }
+        .exp-meta { width: 30%; color: #555; font-size: 14px; }
+        .exp-content { width: 65%; }
+        .exp-content h3 { font-size: 20px; margin-bottom: 10px; }
+        .exp-content p { color: #888; font-size: 15px; }
+
+        /* --- Contact Form --- */
+        .contact-container { display: flex; gap: 100px; }
+        .contact-info { width: 40%; }
+        .contact-form { width: 60%; }
+        .form-group { margin-bottom: 25px; }
+        input, textarea {
+            width: 100%;
+            background: none;
+            border: none;
+            border-bottom: 1px solid #333;
+            padding: 15px 0;
+            color: #fff;
+            font-size: 16px;
+            outline: none;
+        }
+        input:focus, textarea:focus { border-color: #fff; }
+        textarea { height: 100px; }
+
+        /* --- Footer (Global) --- */
+        footer {
+            padding: 80px 8% 40px;
+            background: #050505;
+            text-align: center;
+            border-top: 1px solid #111;
+        }
+        .footer-socials { margin-bottom: 30px; }
+        .footer-socials a { color: #fff; margin: 0 15px; text-decoration: none; font-size: 14px; opacity: 0.6; }
+        .footer-socials a:hover { opacity: 1; }
+        .copyright { color: #333; font-size: 12px; margin-top: 20px; }
+
+        @media (max-width: 768px) {
+            .contact-container, .exp-item { flex-direction: column; gap: 20px; }
+            .exp-meta, .exp-content, .contact-info, .contact-form { width: 100%; }
+            header { padding: 20px 5%; }
+            nav { display: none; } /* Mobile menu can be added later */
         }
     </style>
 </head>
@@ -122,37 +195,137 @@
         <div class="logo">Muzammil Ahmed</div>
         <nav>
             <a href="#services">Services</a>
-            <a href="#portfolio">Portfolio</a>
+            <a href="#projects">Work</a>
             <a href="#experience">Experience</a>
-            <a href="#contact">Contact Us</a>
+            <a href="#contact">Contact</a>
         </nav>
     </header>
 
     <section class="hero">
-        <h1>SOFTWARE ENGINEER,<br><strong>.NET & FLUTTER DEVELOPER</strong></h1>
-        <p>With a passion for tech and a lifelong commitment to crafting robust cross-platform solutions. I am eager to dedicate my skills to transforming ideas into seamless applications.</p>
-        
-        <a href="#contact" class="btn">LET'S TALK</a>
+        <h1>SOFTWARE ENGINEER, <br><b>.NET & FLUTTER DEVELOPER</b></h1>
+        <p>Expertise in building high-performance cross-platform applications and robust backend architectures with a focus on clean, scalable code.</p>
+        <a href="#contact" class="btn">START A PROJECT</a>
 
         <div class="stats">
             <div class="stat-item">
-                <h3>1st Place</h3>
-                <p>COMBITS'25 Hackathon</p>
+                <h3>1st</h3>
+                <p>COMBITS'25 WINNER</p>
             </div>
             <div class="stat-item">
                 <h3>3.5</h3>
-                <p>CGPA</p>
+                <p>CGPA SCORE</p>
             </div>
             <div class="stat-item">
-                <h3>4+</h3>
-                <p>Major Projects Completed</p>
+                <h3>04+</h3>
+                <p>LIVE PROJECTS</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <span class="section-title">Specialization</span>
+        <div class="grid">
+            <div class="card">
+                <h3>Mobile Apps</h3>
+                <p>Native-grade cross-platform apps using Flutter for Android & iOS with seamless API integrations.</p>
+            </div>
+            <div class="card">
+                <h3>Desktop Solutions</h3>
+                <p>High-efficiency POS systems and utility tools built with .NET Core and Windows-specific optimizations.</p>
+            </div>
+            <div class="card">
+                <h3>Backend Architecture</h3>
+                <p>Scalable REST APIs and database management using SQL Server, Firebase, and Clean Architecture patterns.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <span class="section-title">Selected Works</span>
+        <div class="grid">
+            <div class="portfolio-card">
+                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800" alt="Snooker POS" class="portfolio-img">
+                <div class="project-info">
+                    <h3>Que Track (Snooker POS)</h3>
+                    <p>Flutter / Firebase / Desktop</p>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=800" alt="Document Inspector" class="portfolio-img">
+                <div class="project-info">
+                    <h3>Document Inspector</h3>
+                    <p>.NET Core / OpenXML / QA Tool</p>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800" alt="StudyCircle" class="portfolio-img">
+                <div class="project-info">
+                    <h3>StudyCircle App</h3>
+                    <p>Flutter / Full Stack / Hackathon Winner</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <span class="section-title">Professional Journey</span>
+        
+        <div class="exp-item">
+            <div class="exp-meta">Jan 2026 — Present</div>
+            <div class="exp-content">
+                <h3>Junior Desktop & App Developer • GofTech Solutions</h3>
+                <p>Building full-cycle Flutter apps including Grocery POS and Jewellery management systems. Handling Play Store deployments and versioning.</p>
+            </div>
+        </div>
+
+        <div class="exp-item">
+            <div class="exp-meta">Sept 2024 — Present</div>
+            <div class="exp-content">
+                <h3>Flutter Lead • GDGOC</h3>
+                <p>Mentoring 100+ students in cross-platform development and conducting technical bootcamps for mobile architecture.</p>
+            </div>
+        </div>
+
+        <div class="exp-item">
+            <div class="exp-meta">July 2024 — March 2025</div>
+            <div class="exp-content">
+                <h3>App Development Intern • Firnas Tech</h3>
+                <p>Developed responsive UIs with Firebase real-time database integration and social authentication systems.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <span class="section-title">Get in Touch</span>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>Let's build something exceptional.</h2>
+                <p style="margin-top:20px; color:#555;">Email me at:<br><span style="color:#fff;">muzammilahmed5711@gmail.com</span></p>
+            </div>
+            <div class="contact-form">
+                <form action="https://formspree.io/f/muzammilahmed5711@gmail.com" method="POST">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="YOUR NAME" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="YOUR EMAIL" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder="TELL ME ABOUT YOUR PROJECT" required></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="border:none; cursor:pointer;">SEND MESSAGE</button>
+                </form>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Muzammil Ahmed. All rights reserved.</p>
-        <p>muzammilahmed5711@gmail.com | 03051030354</p>
+        <div class="footer-socials">
+            <a href="https://github.com/Muzamil995" target="_blank">GITHUB</a>
+            <a href="https://linkedin.com/in/muzamila-hmed" target="_blank">LINKEDIN</a>
+        </div>
+        <p>muzammilahmed5711@gmail.com | +92 305 1030354</p>
+        <div class="copyright">© 2026 MUZAMMIL AHMED. ALL RIGHTS RESERVED.</div>
     </footer>
 
 </body>
