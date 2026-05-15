@@ -3,17 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muzammil Ahmed | Software Engineer</title>
+    <title>Muzammil Ahmed | Software Solutions</title>
     <style>
         /* --- Base Theme (Premium Dark) --- */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            scroll-behavior: smooth;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
         body {
-            background-color: #000000; /* Pure Black for Premium look */
+            background-color: #000000;
             color: #ffffff;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
@@ -31,12 +26,7 @@
             background: rgba(0,0,0,0.9);
             z-index: 1000;
         }
-        .logo {
-            font-size: 22px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
+        .logo { font-size: 22px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
         nav a {
             color: #ffffff;
             text-decoration: none;
@@ -47,30 +37,31 @@
             transition: opacity 0.3s;
             opacity: 0.7;
         }
-        nav a:hover {
-            opacity: 1;
-        }
+        nav a:hover { opacity: 1; }
 
-        /* --- Hero Section --- */
+        /* --- Hero Section (Split Layout for Profile Image) --- */
         .hero {
-            padding: 150px 8% 100px;
-            max-width: 1200px;
+            padding: 120px 8% 100px;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
         }
+        .hero-text { flex: 1; }
         .hero h1 {
-            font-size: clamp(40px, 6vw, 70px);
+            font-size: clamp(35px, 5vw, 60px);
             line-height: 1.1;
             font-weight: 300;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             letter-spacing: -1px;
         }
-        .hero h1 b {
-            font-weight: 700;
-            display: block;
-        }
+        .hero h1 b { font-weight: 700; display: block; }
         .hero p {
             font-size: 18px;
-            color: #888;
-            max-width: 600px;
+            color: #aaaaaa;
+            max-width: 550px;
             margin-bottom: 40px;
         }
         .btn {
@@ -83,21 +74,35 @@
             font-size: 14px;
             letter-spacing: 1px;
             transition: transform 0.3s;
+            border: none;
+            cursor: pointer;
         }
-        .btn:hover {
-            transform: scale(1.05);
+        .btn:hover { transform: scale(1.05); }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
         }
+        .hero-image img {
+            width: 100%;
+            max-width: 450px;
+            border-radius: 10px;
+            filter: grayscale(100%);
+            transition: filter 0.5s ease;
+        }
+        .hero-image img:hover { filter: grayscale(0%); }
 
         /* --- Stats Row --- */
         .stats {
             display: flex;
             gap: 60px;
-            margin-top: 80px;
-            padding-top: 50px;
+            margin-top: 60px;
+            padding-top: 40px;
             border-top: 1px solid #222;
         }
-        .stat-item h3 { font-size: 35px; font-weight: 700; }
-        .stat-item p { font-size: 12px; text-transform: uppercase; color: #555; letter-spacing: 2px; }
+        .stat-item h3 { font-size: 30px; font-weight: 700; }
+        .stat-item p { font-size: 11px; text-transform: uppercase; color: #555; letter-spacing: 2px; }
 
         /* --- Sections General --- */
         section { padding: 100px 8%; }
@@ -113,46 +118,37 @@
         /* --- Grid Layouts (Services & Portfolio) --- */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
         }
 
-        /* --- Cards (Services & Projects) --- */
+        /* --- Cards --- */
         .card {
             background: #0a0a0a;
             border: 1px solid #1a1a1a;
             padding: 40px;
             transition: border 0.3s;
         }
-        .card:hover { border-color: #444; }
-        .card h3 { margin-bottom: 15px; font-weight: 600; }
-        .card p { color: #888; font-size: 15px; }
+        .card:hover { border-color: #555; }
+        .card h3 { margin-bottom: 15px; font-weight: 600; font-size: 20px; }
+        .card p { color: #888; font-size: 15px; line-height: 1.7; }
 
-        .portfolio-card { padding: 0; overflow: hidden; border: none; background: none; }
+        .portfolio-card { padding: 0; border: none; background: none; }
         .portfolio-img {
             width: 100%;
-            height: 350px;
+            height: 300px;
             object-fit: cover;
             filter: grayscale(100%);
             transition: filter 0.5s, transform 0.5s;
+            border-radius: 5px;
         }
-        .portfolio-card:hover .portfolio-img { filter: grayscale(0%); transform: scale(1.05); }
-        .project-info { padding: 25px 0; }
-
-        /* --- Experience Timeline --- */
-        .exp-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 30px 0;
-            border-bottom: 1px solid #1a1a1a;
-        }
-        .exp-meta { width: 30%; color: #555; font-size: 14px; }
-        .exp-content { width: 65%; }
-        .exp-content h3 { font-size: 20px; margin-bottom: 10px; }
-        .exp-content p { color: #888; font-size: 15px; }
+        .portfolio-card:hover .portfolio-img { filter: grayscale(0%); transform: scale(1.02); }
+        .project-info { padding: 20px 0; }
+        .project-info h3 { font-size: 18px; margin-bottom: 5px;}
+        .project-info p { color: #666; font-size: 14px;}
 
         /* --- Contact Form --- */
-        .contact-container { display: flex; gap: 100px; }
+        .contact-container { display: flex; gap: 80px; }
         .contact-info { width: 40%; }
         .contact-form { width: 60%; }
         .form-group { margin-bottom: 25px; }
@@ -165,27 +161,34 @@
             color: #fff;
             font-size: 16px;
             outline: none;
+            font-family: inherit;
         }
         input:focus, textarea:focus { border-color: #fff; }
-        textarea { height: 100px; }
+        textarea { height: 100px; resize: vertical; }
 
-        /* --- Footer (Global) --- */
+        /* --- Global Footer --- */
         footer {
-            padding: 80px 8% 40px;
+            padding: 60px 8% 40px;
             background: #050505;
             text-align: center;
             border-top: 1px solid #111;
+            width: 100%;
         }
-        .footer-socials { margin-bottom: 30px; }
-        .footer-socials a { color: #fff; margin: 0 15px; text-decoration: none; font-size: 14px; opacity: 0.6; }
+        .footer-socials { margin-bottom: 25px; }
+        .footer-socials a { color: #fff; margin: 0 15px; text-decoration: none; font-size: 13px; opacity: 0.6; letter-spacing: 1px; }
         .footer-socials a:hover { opacity: 1; }
-        .copyright { color: #333; font-size: 12px; margin-top: 20px; }
+        .footer-contact { color: #666; font-size: 14px; margin-bottom: 10px; }
+        .copyright { color: #333; font-size: 12px; margin-top: 20px; text-transform: uppercase; letter-spacing: 1px;}
 
-        @media (max-width: 768px) {
-            .contact-container, .exp-item { flex-direction: column; gap: 20px; }
-            .exp-meta, .exp-content, .contact-info, .contact-form { width: 100%; }
-            header { padding: 20px 5%; }
-            nav { display: none; } /* Mobile menu can be added later */
+        /* Mobile Responsiveness */
+        @media (max-width: 900px) {
+            .hero { flex-direction: column-reverse; text-align: center; padding-top: 80px; }
+            .hero-image { justify-content: center; }
+            .hero p { margin: 0 auto 40px auto; }
+            .stats { justify-content: center; flex-wrap: wrap; }
+            .contact-container { flex-direction: column; gap: 40px; }
+            .contact-info, .contact-form { width: 100%; }
+            nav { display: none; }
         }
     </style>
 </head>
@@ -196,125 +199,106 @@
         <nav>
             <a href="#services">Services</a>
             <a href="#projects">Work</a>
-            <a href="#experience">Experience</a>
             <a href="#contact">Contact</a>
         </nav>
     </header>
 
     <section class="hero">
-        <h1>SOFTWARE ENGINEER, <br><b>.NET & FLUTTER DEVELOPER</b></h1>
-        <p>Expertise in building high-performance cross-platform applications and robust backend architectures with a focus on clean, scalable code.</p>
-        <a href="#contact" class="btn">START A PROJECT</a>
+        <div class="hero-text">
+            <h1>DIGITAL SOLUTIONS, <br><b>BUILT FOR SCALE.</b></h1>
+            <p>I lead a dedicated team of developers to build high-performance mobile apps, robust web platforms, and smart AI integrations. We transform complex ideas into intuitive, market-ready digital products.</p>
+            <a href="#contact" class="btn">HIRE OUR TEAM</a>
 
-        <div class="stats">
-            <div class="stat-item">
-                <h3>1st</h3>
-                <p>COMBITS'25 WINNER</p>
+            <div class="stats">
+                <div class="stat-item">
+                    <h3>04+</h3>
+                    <p>YEARS EXP.</p>
+                </div>
+                <div class="stat-item">
+                    <h3>100%</h3>
+                    <p>DELIVERY RATE</p>
+                </div>
+                <div class="stat-item">
+                    <h3>Full</h3>
+                    <p>STACK EXPERTISE</p>
+                </div>
             </div>
-            <div class="stat-item">
-                <h3>3.5</h3>
-                <p>CGPA SCORE</p>
-            </div>
-            <div class="stat-item">
-                <h3>04+</h3>
-                <p>LIVE PROJECTS</p>
-            </div>
+        </div>
+        
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=800" alt="Muzammil Ahmed">
         </div>
     </section>
 
     <section id="services">
-        <span class="section-title">Specialization</span>
+        <span class="section-title">What We Do</span>
         <div class="grid">
             <div class="card">
-                <h3>Mobile Apps</h3>
-                <p>Native-grade cross-platform apps using Flutter for Android & iOS with seamless API integrations.</p>
+                <h3>App Development</h3>
+                <p>Native-grade, cross-platform mobile and desktop applications using Flutter. We focus on smooth animations, clean UI, and scalable state management.</p>
             </div>
             <div class="card">
-                <h3>Desktop Solutions</h3>
-                <p>High-efficiency POS systems and utility tools built with .NET Core and Windows-specific optimizations.</p>
+                <h3>Web Platforms</h3>
+                <p>Robust and secure web applications and RESTful APIs powered by .NET Core, Node.js, and modern frontend frameworks. Built to handle scale.</p>
             </div>
             <div class="card">
-                <h3>Backend Architecture</h3>
-                <p>Scalable REST APIs and database management using SQL Server, Firebase, and Clean Architecture patterns.</p>
+                <h3>AI Integrations</h3>
+                <p>Enhancing your products with smart, personalized insights. We integrate advanced AI models (like Gemini) to automate and optimize workflows.</p>
+            </div>
+            <div class="card">
+                <h3>Custom Software</h3>
+                <p>From complex POS systems to specialized backend administration panels. We design architecture tailored specifically to your business logic.</p>
             </div>
         </div>
     </section>
 
     <section id="projects">
-        <span class="section-title">Selected Works</span>
+        <span class="section-title">Featured Work</span>
         <div class="grid">
             <div class="portfolio-card">
                 <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800" alt="Snooker POS" class="portfolio-img">
                 <div class="project-info">
                     <h3>Que Track (Snooker POS)</h3>
-                    <p>Flutter / Firebase / Desktop</p>
+                    <p>Custom Flutter & Firebase system for business management.</p>
                 </div>
             </div>
             <div class="portfolio-card">
                 <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=800" alt="Document Inspector" class="portfolio-img">
                 <div class="project-info">
-                    <h3>Document Inspector</h3>
-                    <p>.NET Core / OpenXML / QA Tool</p>
+                    <h3>Enterprise Utility Tools</h3>
+                    <p>.NET Core automations for document processing and data QA.</p>
                 </div>
             </div>
             <div class="portfolio-card">
                 <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800" alt="StudyCircle" class="portfolio-img">
                 <div class="project-info">
-                    <h3>StudyCircle App</h3>
-                    <p>Flutter / Full Stack / Hackathon Winner</p>
+                    <h3>Real-time Applications</h3>
+                    <p>Award-winning full-stack applications with real-time sync.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="experience">
-        <span class="section-title">Professional Journey</span>
-        
-        <div class="exp-item">
-            <div class="exp-meta">Jan 2026 — Present</div>
-            <div class="exp-content">
-                <h3>Junior Desktop & App Developer • GofTech Solutions</h3>
-                <p>Building full-cycle Flutter apps including Grocery POS and Jewellery management systems. Handling Play Store deployments and versioning.</p>
-            </div>
-        </div>
-
-        <div class="exp-item">
-            <div class="exp-meta">Sept 2024 — Present</div>
-            <div class="exp-content">
-                <h3>Flutter Lead • GDGOC</h3>
-                <p>Mentoring 100+ students in cross-platform development and conducting technical bootcamps for mobile architecture.</p>
-            </div>
-        </div>
-
-        <div class="exp-item">
-            <div class="exp-meta">July 2024 — March 2025</div>
-            <div class="exp-content">
-                <h3>App Development Intern • Firnas Tech</h3>
-                <p>Developed responsive UIs with Firebase real-time database integration and social authentication systems.</p>
-            </div>
-        </div>
-    </section>
-
     <section id="contact">
-        <span class="section-title">Get in Touch</span>
+        <span class="section-title">Let's Collaborate</span>
         <div class="contact-container">
             <div class="contact-info">
-                <h2>Let's build something exceptional.</h2>
-                <p style="margin-top:20px; color:#555;">Email me at:<br><span style="color:#fff;">muzammilahmed5711@gmail.com</span></p>
+                <h2 style="font-size: 35px; font-weight: 300; margin-bottom: 20px;">Ready to digitize your business?</h2>
+                <p style="color:#888;">Whether you need a complete mobile app, a scalable web backend, or AI integration, my team and I are ready to deliver.</p>
             </div>
             <div class="contact-form">
-               <form action="https://formspree.io/f/xbdwvbqz" method="POST">
-    <div class="form-group">
-        <input type="text" name="name" placeholder="YOUR NAME" required>
-    </div>
-    <div class="form-group">
-        <input type="email" name="email" placeholder="YOUR EMAIL" required>
-    </div>
-    <div class="form-group">
-        <textarea name="message" placeholder="TELL ME ABOUT YOUR PROJECT" required></textarea>
-    </div>
-    <button type="submit" class="btn" style="border:none; cursor:pointer;">SEND MESSAGE</button>
-</form>
+                <form action="https://formspree.io/f/xbdwvbqz" method="POST">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="YOUR NAME" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="YOUR EMAIL" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder="TELL US ABOUT YOUR PROJECT REQUIREMENTS" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">SEND INQUIRY</button>
+                </form>
             </div>
         </div>
     </section>
@@ -324,8 +308,8 @@
             <a href="https://github.com/Muzamil995" target="_blank">GITHUB</a>
             <a href="https://linkedin.com/in/muzamila-hmed" target="_blank">LINKEDIN</a>
         </div>
-        <p>muzammilahmed5711@gmail.com | +92 305 1030354</p>
-        <div class="copyright">© 2026 MUZAMMIL AHMED. ALL RIGHTS RESERVED.</div>
+        <p class="footer-contact">muzammilahmed5711@gmail.com | +92 305 1030354</p>
+        <div class="copyright">© 2026 MUZAMMIL AHMED & TEAM. ALL RIGHTS RESERVED.</div>
     </footer>
 
 </body>
